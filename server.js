@@ -13,3 +13,9 @@ app.get('/', (req, res)=>{
 app.listen(PORT, ()=>{
 	console.log('listening');
 })
+
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb+srv://josephklein87:Joey1617@sei.7ciujji.mongodb.net/?retryWrites=true&w=majority', ()=>{
+	console.log('connected to mongo');
+})

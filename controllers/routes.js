@@ -38,7 +38,7 @@ router.post('/search', (req, res)=>{
   Movie.find({name: regex}, (err, foundMovie)=> {
       res.render(
         'search.ejs', {
-          MovieIndex: foundMovie
+          movieIndex: foundMovie
       })
   });
 })
@@ -61,7 +61,7 @@ router.get(`/`, (req, res)=> {
         if (error) console.log('error')
       res.render(`index.ejs`, 
       {
-        MovieIndex: MovieList
+        movieIndex: MovieList
       });
     });
   });
@@ -76,7 +76,7 @@ router.get('/:id/edit', (req, res)=>{
       res.render(
       'edit.ejs',
       {
-        MovieIndex: foundMovie
+        movieIndex: foundMovie
       }
     );
   });
@@ -97,7 +97,7 @@ router.get('/:id', (req, res)=>{
       res.render(
       'show.ejs',
       {
-        MovieIndex: foundMovie
+        movieIndex: foundMovie
       }
     );
   });

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require('mongoose');
-const Movie = require('../models/MovieSchema.js');
+const Movie = require('../models/movieSchema.js');
 const MovieSeed = require('../models/seed.js');
 
 // Movie.create(MovieSeed, (err, data) => {

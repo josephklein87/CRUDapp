@@ -11,27 +11,32 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/styles.css">
     
-    <title>THE UNWATCHABLES</title>
+    <title>SEARCH RESULTS</title>
   </head>
   <body class="container-fluid main-container">
-    <h1 class="main-page-header">THE UNWATCHABLES</h1>
-    <h2 class="main-page-subheader">A TERRIBLE, NO GOOD, VERY BAD MOVIE DATABASE</h2>
-    <div class="new-button-div">
-        <h3>HATE A MOVIE?</h3>
-        <a href="/new"><button class="btn btn-danger new-button">THROW IT IN THE PIT</button></a>
+    <div class="back-button-divider">
+        <a href="/"><button class="btn btn-secondary back-button" >BACK</button></a>
     </div>
     <div class="garbage-pit-header-container">
-        <h3 class="garbage-pit-header">THE GARBAGE PIT</h3>
+        <h3 class="garbage-pit-header">SEARCH RESULTS</h3>
     </div>
     <div class="search-clear">
       <form class="search" action="/search" method="POST">
         <div class="search-group">
-            <input type="text" name="name" class="searchbar" placeholder="Find A Crappy Movie" aria-label="Search" aria-describedby="search-addon" />
+            <input type="text" name="name" class="searchbar" placeholder="Search by Title" aria-label="Search" aria-describedby="search-addon" />
             <button type="submit" class="btn btn-primary">search</button>
         </div>
       </form>
   </div>
     <div class="movies-container">
+        <% if (movieIndex.length === 0 || movieIndex === undefined) { %>
+            <div class="no-results">
+                <h4>MOVIE NOT IN DATABASE.</h4>
+                <h4>IT MUST BE A GOOD MOVIE!</h4> 
+                <h4>IF YOU DISAGREE...</h4>
+                <a href="/new"><button class="btn btn-danger new-button">THROW IT IN THE PIT</button></a>
+            </div>
+        <% } else { %>
         <% for (let i=0; i < movieIndex.length; i++) { %>
             <a href="/<%=movieIndex[i]._id%>"><div class="index-tile">
                 <img class="main-page-posters" src= <%=movieIndex[i].image%> >
@@ -44,7 +49,7 @@
                   <% } %>
                 </div>
             </div></a> 
-        <% }%>
+        <% } } %>
     </div>
   </body>
 </html>

@@ -1,0 +1,187 @@
+/* MAIN PAGE STYLING */
+
+@font-face {
+    font-family: mySlime;
+    src: url(shlop.ttf);
+}
+
+html {
+    margin: 0
+}
+
+body {
+    margin: 0;
+    text-align: center;
+    background-color: black
+}
+
+h1, h2, h3, h4, p {
+    text-align: center;
+    color: white
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: greenyellow;
+}
+
+.main-page-header {
+    font-size: 8vw;
+}
+
+.main-page-subheader {
+    font-size: 3.2vw;
+}
+
+.new-button {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    font-size: 1em;
+}
+
+.garbage-pit-header {
+    font-size: 8vw;
+    margin-bottom: 0;
+    font-family: mySlime;
+    color: rgb(2, 204, 0);
+    text-shadow: 2px 2px black;
+    background-image: url("https://i.imgur.com/XjXhG3I.png");
+    background-size: contain;
+    background-repeat:repeat;
+}
+
+.search-clear {
+    display: flex;
+    align-items: center;
+    background-image: url("https://i.imgur.com/oKYkVZl.jpg");
+    padding-top: 1em;
+    padding-bottom: 1em;
+    justify-content: center;
+}
+
+.search-group {
+    display: flex;
+    justify-content: center;
+    background-size: auto;
+}
+
+.searchbar{
+    margin: 0 0 0 0;
+    width: 300px;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-image: url("https://i.imgur.com/2m1RmTh.gif");
+    background-repeat: repeat;
+    margin: 0;
+    min-height: 70vh;
+}
+
+.index-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em;
+    background-color:rgb(49, 144, 49);
+    padding: 5px;
+}
+
+.main-page-posters {
+    width: 250px;
+    height: 370.55px
+}
+
+.main-container {
+    padding: 0;
+    margin: 0;
+}
+
+.movie-tile-tags {
+    display: flex;
+    justify-content: center;
+}
+
+.movie-tile-tag-single {
+    background-color: white;
+    color: black;
+    margin: .2em;
+    padding: 2px;
+    font-size: .5em;
+}
+
+.new-button-div {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+
+/* SHOW PAGE STYLING */
+.tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tag-tile {
+    background-color: white;
+    margin: 1em;
+    padding: 10px;
+    color: black;
+}
+
+.show-page-poster {
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+    display: block;
+}
+
+.movie-info {
+    margin-top: 1em;
+}
+
+.back-button {
+    margin: 20px;
+}
+
+.edit-delete {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.edit-delete form, .edit-delete button {
+    margin: 1em;
+}
+
+/* NEW PAGE STYLING */
+
+.form-control {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
+
+
+/* SEARCH PAGE STYLINGS */
+
+.no-results {
+    background-color: darkgreen;
+    padding: 20px;
+    height: 200px;
+    display: inline ;
+    margin-top: 100px;
+}

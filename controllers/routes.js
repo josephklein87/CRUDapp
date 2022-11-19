@@ -20,8 +20,8 @@ router.get('/new', (req, res)=>{
   });
 
 
-router.post('/', (req, res)=>{
-  req.body.tags = req.body.tags.split(" ")
+router.post('/addMovie', (req, res)=>{
+  req.body.tags = req.body.tags.split(",")
   Movie.create(req.body, ()=>{
     res.redirect("/");
 });
@@ -35,7 +35,7 @@ router.post('/search', (req, res)=>{
   const searchTitle = req.body.name;
   const regex = new RegExp(searchTitle, 'i')
     
-  Movie.find({name: regex}, (err, foundMovie)=> {
+  Movie.find({$or: [{name: regex}, {director: regex}, {worstActor: regex}, {year: regex}, {tags: regex}]}, (err, foundMovie)=> {
       res.render(
         'search.ejs', {
           movieIndex: foundMovie
@@ -43,18 +43,36 @@ router.post('/search', (req, res)=>{
   });
 })
 
+router.get(`/search`, (req, res)=> {
+  Movie.find({}, (error, MovieList)=> {
+    if (error) console.log('error')
+  res.render(`index.ejs`, 
+  {
+    movieIndex: MovieList
+  });
+}).sort({_id: -1});
+});
+
+// router.post('/clear', (req, res)=>{
+//   Movie.find({}, (err, allMovies)=> {
+//       res.render('index.ejs', {
+//           movieIndex: allMovies
+//       })
+//   });
+// })
+
 
 // =======================================
 //              DELETE
 // =======================================
 router.delete('/:id', (req, res)=>{
     Movie.findByIdAndRemove(req.params.id, (err, data)=>{
-        res.redirect('/');//redirect back to fruits index
+        res.redirect('/');
     });
   });
 
 // =======================================
-//              HOMEs
+//              HOME
 // =======================================
 router.get(`/`, (req, res)=> {
     Movie.find({}, (error, MovieList)=> {
@@ -63,7 +81,7 @@ router.get(`/`, (req, res)=> {
       {
         movieIndex: MovieList
       });
-    });
+    }).sort({_id: -1});
   });
 
 
@@ -85,8 +103,8 @@ router.get('/:id/edit', (req, res)=>{
 router.put('/:id', (req, res)=>{
   req.body.tags = req.body.tags.split(",")
   Movie.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel)=>{
-      res.redirect(`/`);
-  });
+    res.redirect(`/${req.params.id}`);
+});
 });
 
 // =======================================

@@ -39,6 +39,7 @@
         <% } else { %>
         <% for (let i=0; i < movieIndex.length; i++) { %>
             <a href="/<%=movieIndex[i]._id%>"><div class="index-tile">
+                <h4><%=movieIndex[i].genre.toUpperCase()%></h4>
                 <img class="main-page-posters" src= <%=movieIndex[i].image%> >
                 <div class="movie-tile-info">
                   <%= movieIndex[i].name %> (<%=movieIndex[i].year%>)

@@ -4,6 +4,7 @@ const Schema = mongoose.Schema; // create a shorthand for the mongoose Schema co
 
 const movieSchema = new Schema({
     name: String,
+    genre: String,
     image: String,
     year: String,
     director:[String],

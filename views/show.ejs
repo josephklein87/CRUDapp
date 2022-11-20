@@ -24,8 +24,9 @@
             <img class="show-page-poster" src= <%=movieIndex.image%>>
             <h2><%= movieName %></h2>
             <div class="tags">
+                <p class="tag-tile"><%= movieIndex.genre.toLowerCase() %> </p>
                 <% for (let i=0; i < movieIndex.tags.length; i++) { %>
-                    <p class = "tag-tile"><%=movieIndex.tags[i]%> </p>
+                    <p class = "tag-tile"><%=movieIndex.tags[i].toLowerCase()%> </p>
                     <% } %>
             </div>
             <div class="movie-info">

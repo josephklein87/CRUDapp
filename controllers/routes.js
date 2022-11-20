@@ -35,7 +35,7 @@ router.post('/search', (req, res)=>{
   const searchTitle = req.body.name;
   const regex = new RegExp(searchTitle, 'i')
     
-  Movie.find({$or: [{name: regex}, {director: regex}, {worstActor: regex}, {year: regex}, {tags: regex}]}, (err, foundMovie)=> {
+  Movie.find({$or: [{name: regex}, {director: regex}, {worstActor: regex}, {year: regex}, {tags: regex}, {genre: regex}]}, (err, foundMovie)=> {
       res.render(
         'search.ejs', {
           movieIndex: foundMovie

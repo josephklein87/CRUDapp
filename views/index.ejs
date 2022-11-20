@@ -34,13 +34,14 @@
     <div class="movies-container">
         <% for (let i=0; i < movieIndex.length; i++) { %>
             <a href="/<%=movieIndex[i]._id%>"><div class="index-tile">
+                <h5><%=movieIndex[i].genre.toUpperCase()%></h5>
                 <img class="main-page-posters" src= <%=movieIndex[i].image%> >
                 <div class="movie-tile-info">
                   <%= movieIndex[i].name %> (<%=movieIndex[i].year%>)
                 </div>
                 <div class ="movie-tile-tags">
                   <% for (let x = 0; x < movieIndex[i].tags.length; x++) { %>
-                    <p class="movie-tile-tag-single"> <%=movieIndex[i].tags[x]%></p>
+                    <p class="movie-tile-tag-single"> <%=movieIndex[i].tags[x].toLowerCase()%></p>
                   <% } %>
                 </div>
             </div></a> 

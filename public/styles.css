@@ -176,6 +176,12 @@ a:hover {
 }
 
 
+/* EDIT PAGE STYLING */
+
+.edit-header {
+    color: white;
+}
+
 /* SEARCH PAGE STYLINGS */
 
 .no-results {

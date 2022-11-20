@@ -16,8 +16,10 @@ const MovieSeed = require('../models/seed.js');
 //              NEW (ALWAYS ON TOP)
 // =======================================
 router.get('/new', (req, res)=>{
-    res.render('new.ejs');
-  });
+    res.render('new.ejs', {
+    currentUser: req.session.currentUser
+    });
+});
 
 
 router.post('/addMovie', (req, res)=>{
@@ -38,7 +40,8 @@ router.post('/search', (req, res)=>{
   Movie.find({$or: [{name: regex}, {director: regex}, {worstActor: regex}, {year: regex}, {tags: regex}, {genre: regex}]}, (err, foundMovie)=> {
       res.render(
         'search.ejs', {
-          movieIndex: foundMovie
+          movieIndex: foundMovie,
+          currentUser: req.session.currentUser
       })
   });
 })
@@ -48,7 +51,8 @@ router.get(`/search`, (req, res)=> {
     if (error) console.log('error')
   res.render(`index.ejs`, 
   {
-    movieIndex: MovieList
+    movieIndex: MovieList,
+    currentUser: req.session.currentUser
   });
 }).sort({_id: -1});
 });
@@ -79,7 +83,8 @@ router.get(`/`, (req, res)=> {
         if (error) console.log('error')
       res.render(`index.ejs`, 
       {
-        movieIndex: MovieList
+        movieIndex: MovieList,
+        currentUser: req.session.currentUser
       });
     }).sort({_id: -1});
   });
@@ -94,7 +99,8 @@ router.get('/:id/edit', (req, res)=>{
       res.render(
       'edit.ejs',
       {
-        movieIndex: foundMovie
+        movieIndex: foundMovie,
+        currentUser: req.session.currentUser
       }
     );
   });
@@ -115,7 +121,8 @@ router.get('/:id', (req, res)=>{
       res.render(
       'show.ejs',
       {
-        movieIndex: foundMovie
+        movieIndex: foundMovie,
+        currentUser: req.session.currentUser
       }
     );
   });

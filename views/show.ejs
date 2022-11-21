@@ -21,7 +21,8 @@
             <a href="/"><button class="btn btn-secondary back-button" >BACK</button></a>
         </div>
         <div class="container-fluid">
-            <h1>THIS MOVIE SUCKS</h1>
+            <h2>user: <%= movieIndex.username %></h2>
+            <h3>THINKS THIS MOVIE SUCKS</h3>
             <img class="show-page-poster" src= <%=movieIndex.image%>>
             <h2><%= movieName %></h2>
             <div class="tags">
@@ -51,12 +52,18 @@
                 <h4>WHY IT OFFENDED ME SO:</h4>
                 <p><%=movieIndex.review%></p>
             </div>
+            <% if (currentUser && currentUser.username === movieIndex.username) { %>
             <div class="edit-delete">
                 <a href="/<%=movieIndex._id; %>/edit"><button class="btn btn-primary">EDIT</button></a>
                 <form action="/<%=movieIndex._id; %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE" class="btn btn-danger"/>
                 </form>
             </div>
+            <% } else { %>
+            <div class="denied">
+                only the creator can edit or delete
+            </div>
+            <% } %>
         </div>
     </body>
 </html>

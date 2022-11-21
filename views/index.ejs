@@ -19,7 +19,14 @@
     <h2 class="main-page-subheader">A TERRIBLE, NO GOOD, VERY BAD MOVIE DATABASE</h2>
     <div class="new-button-div">
         <h3>HATE A MOVIE?</h3>
-        <a href="/new"><button class="btn btn-danger new-button">THROW IT IN THE PIT</button></a>
+        <% if (currentUser) { %>
+          <a href="/new"><button class="btn btn-danger new-button">THROW IT IN THE PIT</button></a>
+        <% } else { %>
+          <div class = "log-in-or-sign-up-container">
+            <div class = "log-in-or-sign-up"><a href="/sessions/new"><button class="btn btn-primary">log in</button></a><p>or </p><a href="/users/new"><button class="btn btn-primary">sign up</button></a></div>
+            <p>to throw it in the pit</p>
+          </div>
+        <% }  %>
     </div>
     <div class="garbage-pit-header-container">
         <h3 class="garbage-pit-header">THE GARBAGE PIT</h3>

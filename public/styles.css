@@ -63,6 +63,27 @@ a:hover {
     font-size: 1em;
 }
 
+.log-in-or-sign-up {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.log-in-or-sign-up-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.log-in-or-sign-up a, .log-in-or-sign-up p  {
+margin: .2em;
+}
+
+.log-in-or-sign-up-container p {
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
 .garbage-pit-header {
     font-size: 8vw;
     margin-bottom: 0;

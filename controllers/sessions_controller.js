@@ -8,7 +8,7 @@ sessions.get('/new', (req, res) => {
 })
 
 // on sessions form submit (log in)
-sessions.post('/', (req, res) => {
+sessions.post('/userLogin', (req, res) => {
   // username is found and password matches
   // successful log in
 
@@ -45,7 +45,7 @@ sessions.post('/', (req, res) => {
   })
 })
 
-sessions.delete('/', (req, res) => {
+sessions.delete('/logout', (req, res) => {
   req.session.destroy(() => {
     res.redirect('/')
   })

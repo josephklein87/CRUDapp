@@ -15,6 +15,23 @@ body {
     background-color: black
 }
 
+.nav-div {
+    padding:0;
+    margin: 0;
+}
+
+.login-links {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1em;
+    padding:0;
+}
+
+.login-links li {
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
 h1, h2, h3, h4, p {
     text-align: center;
     color: white

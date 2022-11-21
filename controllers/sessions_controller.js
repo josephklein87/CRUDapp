@@ -45,7 +45,7 @@ sessions.post('/userLogin', (req, res) => {
   })
 })
 
-sessions.delete('/logout', (req, res) => {
+sessions.delete('/', (req, res) => {
   req.session.destroy(() => {
     res.redirect('/')
   })

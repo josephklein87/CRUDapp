@@ -21,6 +21,8 @@
     <div class="container-fluid main-container">
         <h1>THROW A MOVIE IN THE PIT</h1>
         <form class="form-group new-movie-container" action="/addMovie" method="POST">
+            <p>logged in as:</p>
+            <input class="username-input" type="text" name="username" value="<%=currentUser.username%>" readonly/><br/>
             <input class="form-control" type="text"  name="name" maxlength="30" placeholder="Title" /><br/>
             <input class="form-control" type="text" name="image" placeholder="Image URL"/><br/>
             <input class="form-control" type="text" name="year" maxlength="4" placeholder="Release Year"/><br/>

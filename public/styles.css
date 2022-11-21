@@ -76,7 +76,7 @@ a:hover {
 }
 
 .log-in-or-sign-up a, .log-in-or-sign-up p  {
-margin: .2em;
+    margin: .2em;
 }
 
 .log-in-or-sign-up-container p {
@@ -221,6 +221,21 @@ margin: .2em;
     margin-right: auto;
     width: 90%;
 }
+
+.username-input {
+    text-align: center;
+    background-color: rgba(56, 45, 255, 0);
+    border: none;
+    color:white;
+    width: 90%;
+    margin-bottom: 1em;
+}
+
+form p {
+    margin-bottom: 0;
+}
+
+
 
 
 /* EDIT PAGE STYLING */

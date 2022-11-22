@@ -7,12 +7,17 @@
 
      <!-- Icons -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/styles.css">
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   
 
     <title>Create an Account</title>
   </head>
@@ -24,11 +29,13 @@
     <div class="container-fluid main-container">
         <h1>Create an Account</h1>
         <form class="form-group create-account" action="/users/newUser" method="POST">
-            <input class="form-control" type="text"  name="username" maxlength="15" placeholder="Username" /><br/>
+            <input class="form-control username-field" type="text"  name="username" maxlength="15" placeholder="Username" onkeyup="usernameCheck()" /><i class="username-check bi bi-x-circle-fill"></i><br/>
             <input class="form-control password-field password" type="password" name="password" placeholder="Password" onkeyup="validate();" oninput="check();"/><i class="pass-status fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i><br/>
             <input class="form-control password-field password-confirm" type="password" name="password-confirm" placeholder="Confirm Password" onkeyup="validate();" oninput="check();"/><i class="pass-status2 fa fa-eye" aria-hidden="true" onClick="viewPassword2()"></i><br/>
             <input class="btn btn-primary add-account-button" id="submit" type="submit" value="Create Account" disabled = true/>
         </form>
+        <div class="username-validate">
+        </div>
         <div id="validation-txt-double">
         </div>
         <div id="validation-txt">
@@ -37,6 +44,7 @@
     <script>
         let key1 = false
         let key2 = false
+        let key3 = false
 
         const viewPassword= () => {
             // used this tutorial : https://html.form.guide/html-form/html-input-type-password/ had to refactor a bit since i am editing multiple pages  //
@@ -55,6 +63,8 @@
             }
             }
         }
+
+        
         const viewPassword2 = () => {
             // used this tutorial : https://html.form.guide/html-form/html-input-type-password/ had to refactor a bit since i am editing multiple pages  //
             {
@@ -98,16 +108,47 @@
             }
                 validationField.innerHTML = errors.join('');
                 key1 = true
-                if (key1 === true & key2 === true) {
+                if (key1 === true && key2 === true && key3 === true) {
                     document.querySelector(".add-account-button").disabled = false
                 }
                 return true;
 
         }
 
+        const usernameCheck = () => {
+            $.ajax({url: '/users/UserList', method:'GET'}).then(function(data) {
+            console.log(data)
+            let validationField = document.querySelector('.username-validate');
+            let userAvailable = document.querySelector('.username-field');
+            let nameStatus = document.querySelector('.username-check');
+            let content = userAvailable.value;
+
+            const  errors = [];
+
+            for (let i=0; i < data.length; i++) {
+                if (data[i].username == content) {
+                    errors.push("This username is not available.");
+                }
+            }
+            if (errors.length > 0 || content.length === 0) {
+                validationField.innerHTML = errors.join('');
+                nameStatus.className = 'username-check bi bi-x-circle-fill'
+                key3=false
+                document.querySelector(".add-account-button").disabled = true
+                return false;
+            } 
+                validationField.innerHTML = errors.join('');
+                nameStatus.className = 'username-check fa fa-check'
+                key3=true
+                if (key1 === true && key2 === true && key3 === true) {
+                    document.querySelector(".add-account-button").disabled = false
+                }
+                return true;
+    })}
+
         // used this stackoverflow post as a starting point and then customized it to my own specifications: //
         // https://stackoverflow.com/questions/9142527/can-you-require-two-form-fields-to-match-with-html5 //
-
+        
         const check = () => {
             let  validationField = document.getElementById('validation-txt-double');
             let  password = document.querySelector('.password');
@@ -116,7 +157,7 @@
 
             let errors = []
             if (passwordConfirm.value != password.value) {
-               errors.push('Password Must be Matching.');
+               errors.push('Passwords much match.');
             }
             if (errors.length > 0) {
                 validationField.innerHTML = errors.join('');
@@ -126,7 +167,7 @@
             } else {
                 validationField.innerHTML = errors.join('');
                 key2 = true
-                if (key1 === true && key2 === true) {
+                if (key1 === true && key2 === true && key3 === true) {
                     document.querySelector(".add-account-button").disabled = false
                 }
                 return true;

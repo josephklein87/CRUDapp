@@ -35,6 +35,10 @@ body {
     color: white;
 }
 
+.session-links:hover {
+color: lightgreen;
+}
+
 h1, h2, h3, h4, p {
     text-align: center;
     color: white
@@ -293,6 +297,26 @@ form p {
 /* New Account Styling */
 
 #validation-txt {
-    margin-top: 1em;
     color: white;
+}
+
+#validation-txt-double {
+    margin-top: 1em;
+    color:white;
+}
+
+.fa-check {
+    color: green;
+    position:relative;
+    z-index: 1;
+    left: 42%;
+    bottom: 32px;
+}
+
+.bi-x-circle-fill { 
+    color: red;
+    position:relative;
+    z-index: 1;
+    left: 41.93%;
+    bottom: 32px;
 }

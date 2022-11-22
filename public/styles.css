@@ -285,6 +285,11 @@ form p {
     bottom: 32px;
 }
 
+.notFound {
+    margin-top: 1em;
+    color: white;
+}
+
 /* New Account Styling */
 
 #validation-txt {

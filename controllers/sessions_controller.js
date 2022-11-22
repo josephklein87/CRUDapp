@@ -7,6 +7,11 @@ sessions.get('/new', (req, res) => {
   res.render('sessions/new.ejs', { currentUser: req.session.currentUser })
 })
 
+sessions.get('/userLogin', (req, res) => {
+    res.render('sessions/new.ejs', { currentUser: req.session.currentUser })
+  })
+  
+
 // on sessions form submit (log in)
 sessions.post('/userLogin', (req, res) => {
   User.findOne({ username: req.body.username }, (err, foundUser) => {
@@ -14,7 +19,7 @@ sessions.post('/userLogin', (req, res) => {
       console.log(err)
       res.send('oops the db had a problem')
     } else if (!foundUser) {
-      res.send('<a  href="/">Sorry, no user found </a>')
+      res.render('sessions/usernamenotfound.ejs', {currentUser: req.session.currentUser})
     } else {
       // user is found
       // check if passwords match
@@ -25,7 +30,7 @@ sessions.post('/userLogin', (req, res) => {
         res.redirect('/')
       } else {
         // passwords do not match
-        res.send('<a href="/"> password does not match </a>')
+        res.render('sessions/passwordnomatch.ejs', {currentUser: req.session.currentUser})
       }
     }
   })

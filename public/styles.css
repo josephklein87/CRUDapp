@@ -183,6 +183,17 @@ a {
 
 
 /* SHOW PAGE STYLING */
+
+.show-page{
+    width: 75%;
+}
+
+.review-section {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .tags {
     display: flex;
     justify-content: center;
@@ -239,19 +250,22 @@ a {
     background-color: white;
     color: black;
     padding: .5em;
-    width: 500px;
+    width: 80%;
     margin-bottom: .5em;
     
 }
 
 .comments-container p {
     color: black;
-    margin: 0;
+    align-self: flex-start;
 }
 
 .commenter {
     align-self: flex-start;
+    margin-bottom: .5em;
 }
+
+
 
 .denied {
     color: white;

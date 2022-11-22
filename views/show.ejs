@@ -20,7 +20,7 @@
         <div class="back-button-divider">
             <a href="/"><button class="btn btn-secondary back-button" >BACK</button></a>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid show-page">
             <h2>user: <%= movieIndex.username %></h2>
             <h3>THINKS THIS MOVIE SUCKS</h3>
             <img class="show-page-poster" src= <%=movieIndex.image%>>
@@ -50,7 +50,7 @@
                     <%=movieIndex.worstActor%> 
                 </p>
                 <h4>WHY IT OFFENDED ME SO:</h4>
-                <p><%=movieIndex.review%></p>
+                <p class="review-section"><%=movieIndex.review%></p>
             </div>
             <% if (currentUser && currentUser.username === movieIndex.username) { %>
             <div class="edit-delete">

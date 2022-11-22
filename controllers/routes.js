@@ -34,13 +34,16 @@ router.post('/addMovie', (req, res)=>{
 // =======================================
 
 router.put('/:id/addComment', (req, res)=>{
-  Movie.findByIdAndUpdate(req.params.id, {$push: {comments: {user: req.body.user, body: req.body.body}}}, (err, foundMovie) => {
-    res.render('show.ejs', {
-        movieIndex: foundMovie,
-        currentUser: req.session.currentUser
-    })
+  Movie.findByIdAndUpdate(req.params.id, {$push: {comments: {user: req.body.user, body: req.body.body}}}, () => {
+    Movie.findById(req.params.id, (err, foundMovie) => {
+      res.render('show.ejs', 
+      {
+          movieIndex: foundMovie,
+          currentUser: req.session.currentUser
+      })
+    });
   });
-});
+})
 
 
 // =======================================

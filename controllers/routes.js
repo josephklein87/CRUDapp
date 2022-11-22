@@ -30,6 +30,20 @@ router.post('/addMovie', (req, res)=>{
 });
 
 // =======================================
+//              POST COMMENT
+// =======================================
+
+router.put('/:id/addComment', (req, res)=>{
+  Movie.findByIdAndUpdate(req.params.id, {$push: {comments: {user: req.body.user, body: req.body.body}}}, (err, foundMovie) => {
+    res.render('show.ejs', {
+        movieIndex: foundMovie,
+        currentUser: req.session.currentUser
+    })
+  });
+});
+
+
+// =======================================
 //              SEARCH
 // =======================================
 

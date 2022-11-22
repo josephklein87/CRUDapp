@@ -61,9 +61,37 @@
             </div>
             <% } else { %>
             <div class="denied">
-                only the creator can edit or delete
             </div>
             <% } %>
+            <% if (currentUser) { %>
+                <form class="form-group new-movie-container" action="/<%=movieIndex._id%>/addComment?_method=PUT" method="POST">
+                <p>logged in as:</p>
+                <input class="username-input" type="text" name="user" value="<%=currentUser.username%>" readonly/><br/>
+                <textarea class="form-control review" id="exampleFormControlTextarea1" rows= "3" name="body" placeholder="Enter comment here"></textarea><br/>
+                <input class="btn btn-primary add-movie-button" id="submit" type="submit" value="Post Comment"/>
+            </form> 
+            <% } else { %>
+            <div class= "denied">
+                <div class = "log-in-or-sign-up-container">
+                    <p>Want to Comment?</p>
+                    <div class = "log-in-or-sign-up"><a href="/sessions/new"><button class="btn btn-primary">log in</button></a><p>or </p><a href="/users/new"><button class="btn btn-primary">sign up</button></a></div>
+                  </div>
+            </div>
+            <% } %>
+            <h4 class="comments-section-header">COMMENTS SECTION</h4>
+            <% if (movieIndex.comments.length === 0) { %>
+            <div class= "denied">
+                No comments yet! Why not be the first?
+            </div>
+            <% } else { %>
+            <div class="comments-main">
+            <% for (let i=0; i < movieIndex.comments.length; i++) { %>
+                <div class="comments-container">
+                    <p class="commenter"><%=movieIndex.comments[i].user%></p>
+                    <p class="comment"><%=movieIndex.comments[i].body%></p>
+                </div>
+            <% } } %>
+            </div>
         </div>
     </body>
 </html>

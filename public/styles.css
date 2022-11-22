@@ -225,6 +225,41 @@ a {
     margin: 1em;
 }
 
+.comments-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    color: black;
+    padding: .5em;
+    width: 500px;
+    margin-bottom: .5em;
+    
+}
+
+.comments-container p {
+    color: black;
+    margin: 0;
+}
+
+.commenter {
+    align-self: flex-start;
+}
+
+.denied {
+    color: white;
+}
+
+.comments-section-header {
+    margin-top: 1em;
+}
 /* NEW PAGE STYLING */
 
 .form-group {
@@ -251,6 +286,7 @@ a {
 form p {
     margin-bottom: 0;
 }
+
 
 
 
@@ -301,8 +337,12 @@ form p {
 }
 
 #validation-txt-double {
-    margin-top: 1em;
     color:white;
+}
+
+.username-validate {
+    color: white;
+    margin-top: 1em;
 }
 
 .fa-check {

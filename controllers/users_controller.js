@@ -19,7 +19,7 @@ users.post('/newUser', (req, res) => {
 })
 
 users.get('/UserList', (req, res) => {
-  User.find({}, (error, UserList)=> {
+  User.find({}, {username: 1}, (error, UserList)=> {
     res.send(UserList)
 })
 });

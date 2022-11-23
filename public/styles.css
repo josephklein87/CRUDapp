@@ -12,7 +12,8 @@ html {
 body {
     margin: 0;
     text-align: center;
-    background-color: black
+    background-color: black;
+    background-image: url("https://i.imgur.com/2m1RmTh.gif");
 }
 
 .nav-div {

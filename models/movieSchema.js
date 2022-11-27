@@ -12,7 +12,9 @@ const movieSchema = new Schema({
     worstActor: {type: String, required: true},
     review: {type: String, required: true},
     tags: {type: Array, required: true},
-    comments: [{user: String, body: String}]
+    comments: [{user: String, body: String}],
+    upvotes: 0,
+    downvotes: 0,
     });
 
     const movie = mongoose.model('Movie', movieSchema);

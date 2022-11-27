@@ -45,6 +45,58 @@ router.put('/:id/addComment', (req, res)=>{
   });
 })
 
+// =======================================
+//              UPVOTE/DOWNVOTE
+// =======================================
+router.put('/:id/agree', (req, res)=>{
+  Movie.findByIdAndUpdate(req.params.id, {$inc: {upvotes: 1}},  
+    () => {
+    Movie.findById(req.params.id, (err, foundMovie) => {
+      res.send(foundMovie)
+    })
+  })
+}) 
+
+
+      //       {
+//           movieIndex: foundMovie,
+//           currentUser: req.session.currentUser
+//       })
+//     });
+//   });
+// })
+
+router.put('/:id/disagree', (req, res)=>{
+  Movie.findByIdAndUpdate(req.params.id, {$inc:  {downvotes: 1}},   
+    () => {
+    Movie.findById(req.params.id, (err, foundMovie) => {
+      res.send(foundMovie)
+    })
+  })
+})
+
+
+      //       {
+//           movieIndex: foundMovie,
+//           currentUser: req.session.currentUser
+//       })
+//     });
+//   });
+// });
+
+router.get('/:id/agree', (req, res) => {
+  Movie.findById(req.params.id, (err, foundMovie)=>{
+    res.send(foundMovie)
+  })
+})
+
+router.get('/:id/disagree', (req, res) => {
+  Movie.findById(req.params.id, (err, foundMovie)=>{
+    res.send(foundMovie)
+  })
+})
+
+
 
 // =======================================
 //              SEARCH

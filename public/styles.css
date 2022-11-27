@@ -184,6 +184,10 @@ a {
 
 /* SHOW PAGE STYLING */
 
+.invisible {
+    display:none;
+}
+
 .show-page{
     width: 75%;
 }
@@ -192,6 +196,16 @@ a {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.count-container {
+    display: flex;
+    justify-content: center;
+}
+
+.agree-count, .disagree-count {
+    margin: 0 1em;
+    font-size: 1em;
 }
 
 .tags {
@@ -225,6 +239,22 @@ a {
 .back-button {
     margin: 20px;
 }
+
+.vote-container {
+    color: greenyellow;
+    display: flex;
+    justify-content: center;
+}
+
+.agree-button, .disagree-button {
+    width: 120px;
+    margin: 1em;
+}
+
+.agree, .disagree{
+    margin: 1em;
+}
+
 
 .edit-delete {
     display: flex;

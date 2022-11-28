@@ -27,15 +27,27 @@
             <a href="/"><button class="btn btn-secondary back-button" >BACK</button></a>
         </div>
         <p class="invisible movieID"><%=movieIndex._id%></p>
+        <% if (currentUser) { %>
+        <p class="invisible userID"><%=currentUser.username%></p>
+        <% } %>
         <div class="container-fluid show-page">
-            <h2>user: <%= movieIndex.username %></h2>
+            <h2 class="user-title"><%= movieIndex.username %></h2>
             <h3>THINKS THIS MOVIE SUCKS</h3>
             <img class="show-page-poster" src= <%=movieIndex.image%>>
             <h2><%= movieName %></h2>
-            <div class="vote-container">
-                <button class="btn btn-secondary agree-button"  onclick="upvote()"><h5>AGREE</h5><span class="agree-count">(<%=movieIndex.upvotes%>)</span></button>
-                <button class="btn btn-secondary disagree-button" onclick="downvote()" ><h5>DISAGREE</h5><span class="disagree-count">(<%=movieIndex.downvotes%>)</span></button>
-            </div>
+            <% if (currentUser) { %>
+                <p class="vote-results"></p>
+                <div class="vote-container">
+                    <button class="btn btn-secondary agree-button"  onclick="upvote()"><h5>AGREE</h5><span class="agree-count">(<%=movieIndex.upvotes%>)</span></button>
+                    <button class="btn btn-secondary disagree-button" onclick="downvote()" ><h5>DISAGREE</h5><span class="disagree-count">(<%=movieIndex.downvotes%>)</span></button>
+                </div>
+            <% } else { %>
+                <h5>Login or Sign Up to Vote</h5>
+                <div class="vote-container">
+                    <button class="btn btn-secondary agree-button-disabled"  disabled><h5>AGREE</h5><span class="agree-count">(<%=movieIndex.upvotes%>)</span></button>
+                    <button class="btn btn-secondary disagree-button-disabled" disabled ><h5>DISAGREE</h5><span class="disagree-count">(<%=movieIndex.downvotes%>)</span></button>
+                </div> 
+            <% } %>  
             <div class="tags">
                 <p class="tag-tile"><%= movieIndex.genre.toLowerCase() %> </p>
                 <% for (let i=0; i < movieIndex.tags.length; i++) { %>
@@ -107,24 +119,79 @@
     </body>
 </html>
 <script>
-
     const id = $('.movieID').text()
+    const user = $('.userID').text()
+    console.log(user)
 
-    const upvote = () => {
-            $.ajax({url: '/' + id + "/agree?_method=PUT", method:'PUT'});
-            $.ajax({url: '/' + id + "/agree", method: 'GET'}).then(function(data) {
-                console.log(data)
-                $('.agree-count').html(`(${data.upvotes})`);
-                $('.disagree-count').html(`(${data.downvotes})`);
+    //to check if user has upvoted or downvoted
+
+const voteChecker = () => {
+    $.ajax({url: '/users/voteCheck', method: 'GET'}).then(function(data) {
+        console.log(data)
+        for (let i=0; i < data.length; i++) {
+            if (data[i].username === user && data[i].upvotes.indexOf(id) > -1) {
+                document.querySelector('.agree-button').disabled = true;
+                document.querySelector('.disagree-button').disabled=false;
+                return true
+            } else if (data[i].username === user && data[i].downvotes.indexOf(id) > -1) {
+                document.querySelector('.disagree-button').disabled = true;
+                document.querySelector('.agree-button').disabled = false;
+                return true
             }
-        )} 
+        }
+    })
+}
+
+const voteSwitchAgree = () => {
+    $.ajax({url: '/users/voteCheck', method: 'GET'}).then(function(data) {
+        for (let i=0; i < data.length; i++) {
+            if (data[i].username === user && data[i].downvotes.indexOf(id) > -1) {
+                $.ajax({url: '/' + id + '/agreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
+                    $('.agree-count').html(`(${data.upvotes})`);
+                    $('.disagree-count').html(`(${data.downvotes})`);
+            })
+            return
+        }   
+    }
+})}
+
+const voteSwitchDisagree = () => {
+    $.ajax({url: '/users/voteCheck', method: 'GET'}).then(function(data) {
+        for (let i=0; i < data.length; i++) {
+            if (data[i].username === user && data[i].upvotes.indexOf(id) > -1) {
+                $.ajax({url: '/' + id + '/disagreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
+                    $('.agree-count').html(`(${data.upvotes})`);
+                    $('.disagree-count').html(`(${data.downvotes})`)
+                });
+                return
+            }
+    }
+})}
+
+voteChecker();
+
+    //to add upvotes or downvotes to page
+    const upvote = () => {
+        voteSwitchDisagree();
+            $.ajax({url: '/users/' + id + "/userUpvote?_method=PUT", method:'PUT'});
+            $.ajax({url: '/' + id + "/agree?_method=PUT", method:'PUT'});
+            $.ajax({url: '/' + id + "/voterResults", method: 'GET'}).then(function(data) {
+                $('.agree-count').html(`(${data.upvotes})`);
+                $('.disagree-count').html(`(${data.downvotes})`)
+                voteChecker();
+            }
+        )
+    } 
 
     const downvote = () => {
+        voteSwitchAgree()
+            $.ajax({url: '/users/' + id + "/userDownvote?_method=PUT", method:'PUT'});
             $.ajax({url: '/' + id + "/disagree?_method=PUT", method:'PUT'});
-            $.ajax({url: '/' + id + "/disagree", method: 'GET'}).then(function(data) {
-                console.log(data)
+            $.ajax({url: '/' + id + "/voterResults", method: 'GET'}).then(function(data) {
                 $('.agree-count').html(`(${data.upvotes})`);
-                $('.disagree-count').html(`(${data.downvotes})`);
+                $('.disagree-count').html(`(${data.downvotes})`)
+                voteChecker();
             }
-        )} 
+        )
+} 
 </script>

@@ -57,6 +57,15 @@ router.put('/:id/agree', (req, res)=>{
   })
 }) 
 
+router.put('/:id/agreeSwitch', (req, res)=>{
+  Movie.findByIdAndUpdate(req.params.id, {$inc: {upvotes: -1}},  
+    () => {
+    Movie.findById(req.params.id, (err, foundMovie) => {
+      res.send(foundMovie)
+    })
+  })
+}) 
+
 
       //       {
 //           movieIndex: foundMovie,
@@ -75,6 +84,16 @@ router.put('/:id/disagree', (req, res)=>{
   })
 })
 
+router.put('/:id/disagreeSwitch', (req, res)=>{
+  Movie.findByIdAndUpdate(req.params.id, {$inc:  {downvotes: -1}},   
+    () => {
+    Movie.findById(req.params.id, (err, foundMovie) => {
+      res.send(foundMovie)
+    })
+  })
+})
+
+
 
       //       {
 //           movieIndex: foundMovie,
@@ -84,18 +103,17 @@ router.put('/:id/disagree', (req, res)=>{
 //   });
 // });
 
-router.get('/:id/agree', (req, res) => {
+router.get('/:id/voterResults', (req, res) => {
   Movie.findById(req.params.id, (err, foundMovie)=>{
     res.send(foundMovie)
   })
 })
 
-router.get('/:id/disagree', (req, res) => {
-  Movie.findById(req.params.id, (err, foundMovie)=>{
-    res.send(foundMovie)
-  })
-})
-
+// router.get('/:id/disagree', (req, res) => {
+//   Movie.findById(req.params.id, (err, foundMovie)=>{
+//     res.send(foundMovie)
+//   })
+// })
 
 
 // =======================================

@@ -34,7 +34,7 @@
             <a href="/search/username/<%= movieIndex.username %>"><h2 class="user-title"><%= movieIndex.username %></h2></a>
             <h3>HATES THIS MOVIE</h3>
             <img class="show-page-poster" src= <%=movieIndex.image%>>
-            <h2><%= movieName %></h2>
+            <h2 class="show-page-movie-name"><%= movieName %></h2>
             <% if (currentUser) { %>
                 <p class="vote-results"></p>
                 <div class="vote-container">

@@ -209,7 +209,7 @@ a {
     background-repeat: round;
 }
 
-h5 {
+.show-page h5 {
     color: greenyellow;
     font-size: 1em;
     margin-bottom: 0;
@@ -217,6 +217,10 @@ h5 {
 
 .vote-results {
     margin-bottom:0;
+}
+
+.comment-box {
+    border-color: black;
 }
 
 .count-container {
@@ -344,9 +348,12 @@ h5 {
     color: greenyellow;
 }
 
-.show-page h2, .user-title, .show-page h4, .show-page h3, .post-comment-container p, .agree-count, .disagree-count{
+.show-page h4, .show-page h3, .post-comment-container p, .agree-count, .disagree-count{
     color: greenyellow;
+}
 
+.show-page-movie-name {
+    color: greenyellow;
 }
 
 .show-page h4 {
@@ -371,7 +378,7 @@ h5 {
 }
     
 .user-title:hover {
-    color: rgb(0, 255, 0);
+    background-color: rgb(0, 255, 0);
 }
 
 .review-section {
@@ -385,6 +392,13 @@ h5 {
 
 .review-div {
     margin: 10px;
+}
+
+.user-title {
+    color: black;
+    background-color: greenyellow;
+    display: inline-block;
+    padding: 10px;
 }
 
 /* NEW PAGE STYLING */

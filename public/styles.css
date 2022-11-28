@@ -300,6 +300,10 @@ h5 {
     
 }
 
+.comments-main, .comments-denied {
+    padding-bottom: 3em;
+}
+
 .comments-container p {
     color: black;
     align-self: flex-start;

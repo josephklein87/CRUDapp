@@ -9,6 +9,14 @@ const MovieSeed = require('../models/seed.js');
 //     console.log(`added provided Movie data`)
 //   })
 
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next()
+  } else {
+    res.redirect('/sessions/new')
+  }
+}
+
 // =======================================
 //              ROUTES
 // =======================================
@@ -22,7 +30,7 @@ router.get('/new', (req, res)=>{
 });
 
 
-router.post('/addMovie', (req, res)=>{
+router.post('/addMovie', isAuthenticated, (req, res)=>{
   req.body.tags = req.body.tags.split(",")
   Movie.create(req.body, ()=>{
     res.redirect("/");
@@ -33,7 +41,7 @@ router.post('/addMovie', (req, res)=>{
 //              POST COMMENT
 // =======================================
 
-router.put('/:id/addComment', (req, res)=>{
+router.put('/:id/addComment', isAuthenticated, (req, res)=>{
   Movie.findByIdAndUpdate(req.params.id, {$push: {comments: {user: req.body.user, body: req.body.body}}}, () => {
     Movie.findById(req.params.id, (err, foundMovie) => {
       res.render('show.ejs', 
@@ -48,7 +56,7 @@ router.put('/:id/addComment', (req, res)=>{
 // =======================================
 //              UPVOTE/DOWNVOTE
 // =======================================
-router.put('/:id/agree', (req, res)=>{
+router.put('/:id/agree', isAuthenticated, (req, res)=>{
   Movie.findByIdAndUpdate(req.params.id, {$inc: {upvotes: 1}},  
     () => {
     Movie.findById(req.params.id, (err, foundMovie) => {
@@ -75,7 +83,7 @@ router.put('/:id/agreeSwitch', (req, res)=>{
 //   });
 // })
 
-router.put('/:id/disagree', (req, res)=>{
+router.put('/:id/disagree', isAuthenticated, (req, res)=>{
   Movie.findByIdAndUpdate(req.params.id, {$inc:  {downvotes: 1}},   
     () => {
     Movie.findById(req.params.id, (err, foundMovie) => {
@@ -152,7 +160,7 @@ router.get(`/search`, (req, res)=> {
 //   });
 // })
 
-router.get('/:tag/:value', (req, res) => {
+router.get('/search/:tag/:value', (req, res) => {
   const searchValue = req.params.value
   const regex = new RegExp(searchValue, 'i')
   Movie.find({[req.params.tag]: regex}, (error, MovieList) => {
@@ -167,7 +175,7 @@ router.get('/:tag/:value', (req, res) => {
 // =======================================
 //              DELETE
 // =======================================
-router.delete('/:id', (req, res)=>{
+router.delete('/:id', isAuthenticated, (req, res)=>{
     Movie.findByIdAndRemove(req.params.id, (err, data)=>{
         res.redirect('/');
     });
@@ -192,7 +200,7 @@ router.get(`/`, (req, res)=> {
 // =======================================
 //              EDIT
 // =======================================
-router.get('/:id/edit', (req, res)=>{
+router.get('/:id/edit', isAuthenticated, (req, res)=>{
   Movie.findById(req.params.id, (err, foundMovie)=>{ 
       res.render(
       'edit.ejs',
@@ -204,7 +212,7 @@ router.get('/:id/edit', (req, res)=>{
   });
 });
 
-router.put('/:id', (req, res)=>{
+router.put('/:id',  isAuthenticated, (req, res)=>{
   req.body.tags = req.body.tags.split(",")
   Movie.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel)=>{
     res.redirect(`/${req.params.id}`);

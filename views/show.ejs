@@ -207,14 +207,16 @@ voteChecker();
                     $.ajax({url: '/' + id + "/voterResults", method: 'GET'}).then(function(data) {
                         $('.agree-count').html(`(${data.upvotes})`);
                         $('.disagree-count').html(`(${data.downvotes})`)
-                        voteChecker();
+                        document.querySelector('.agree-button').disabled = true;
+                        document.querySelector('.disagree-button').disabled= true;
                 })})} else {
             $.ajax({url: '/users/' + id + "/userUpvote?_method=PUT", method:'PUT'});
             $.ajax({url: '/' + id + "/agree?_method=PUT", method:'PUT'});
             $.ajax({url: '/' + id + "/voterResults", method: 'GET'}).then(function(data) {
                 $('.agree-count').html(`(${data.upvotes})`);
                 $('.disagree-count').html(`(${data.downvotes})`)
-                voteChecker();
+                document.querySelector('.agree-button').disabled = true;
+                document.querySelector('.disagree-button').disabled= true;
             }
         )
     }})} 
@@ -228,14 +230,16 @@ voteChecker();
                     $.ajax({url: '/' + id + "/voterResults", method: 'GET'}).then(function(data) {
                         $('.agree-count').html(`(${data.upvotes})`);
                         $('.disagree-count').html(`(${data.downvotes})`)
-                        voteChecker();
+                        document.querySelector('.agree-button').disabled = true;
+                        document.querySelector('.disagree-button').disabled= true;
                 })})} else {
             $.ajax({url: '/users/' + id + "/userDownvote?_method=PUT", method:'PUT'});
             $.ajax({url: '/' + id + "/disagree?_method=PUT", method:'PUT'});
             $.ajax({url: '/' + id + "/voterResults", method: 'GET'}).then(function(data) {
                 $('.agree-count').html(`(${data.upvotes})`);
                 $('.disagree-count').html(`(${data.downvotes})`)
-                voteChecker();
+                document.querySelector('.agree-button').disabled = true;
+                document.querySelector('.disagree-button').disabled= true;
             }
         )
 }})} 

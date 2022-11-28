@@ -31,7 +31,7 @@
         <p class="invisible userID"><%=currentUser._id%></p>
         <% } %>
         <div class="container-fluid show-page">
-            <h2 class="user-title"><%= movieIndex.username %></h2>
+            <a href="/username/<%= movieIndex.username %>"><h2 class="user-title"><%= movieIndex.username %></h2></a>
             <h3>THINKS THIS MOVIE SUCKS</h3>
             <img class="show-page-poster" src= <%=movieIndex.image%>>
             <h2><%= movieName %></h2>
@@ -49,9 +49,9 @@
                 </div> 
             <% } %>  
             <div class="tags">
-                <p class="tag-tile"><%= movieIndex.genre.toLowerCase() %> </p>
+                <a class = "show-search-link" href="/genre/<%=movieIndex.genre%>"><p class="tag-tile"><%= movieIndex.genre.toLowerCase() %> </p></a>
                 <% for (let i=0; i < movieIndex.tags.length; i++) { %>
-                    <p class = "tag-tile"><%=movieIndex.tags[i].toLowerCase()%> </p>
+                    <a class = "show-search-link" href="/tags/<%=movieIndex.tags[i]%>"><p class = "tag-tile"><%=movieIndex.tags[i].toLowerCase()%> </p></a>
                     <% } %>
             </div>
             <div class="movie-info">
@@ -65,12 +65,12 @@
                 
                         <% if (i > 0) { %>
                             , <% } %>
-                        <%=movieIndex.director%>
+                        <a href="/director/<%=movieIndex.director%>"><%=movieIndex.director%></a>
                 <% } %>
                         </p>
                 <h4>THE ACTOR THAT MADE IT WORSE:</h4>
                 <p class ="actor div">
-                    <%=movieIndex.worstActor%> 
+                    <a href="/worstActor/<%=movieIndex.worstActor%>"><%=movieIndex.worstActor%></a>
                 </p>
                 <h4>WHY IT OFFENDED ME SO:</h4>
                 <p class="review-section"><%=movieIndex.review%></p>

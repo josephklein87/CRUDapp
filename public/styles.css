@@ -152,6 +152,7 @@ a {
     align-items: center;
     margin: 2em;
     background-color:rgb(49, 144, 49);
+    height: min-content;
 }
 
 .main-page-posters {
@@ -260,12 +261,12 @@ h5 {
     justify-content: center;
 }
 
-.agree-button, .disagree-button {
+.agree-button, .disagree-button, .agree-button-disabled, .disagree-button-disabled {
     width: 120px;
     margin: 1em;
 }
 
-.agree, .disagree{
+.agree, .disagree {
     margin: 1em;
 }
 

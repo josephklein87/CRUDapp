@@ -152,6 +152,17 @@ router.get(`/search`, (req, res)=> {
 //   });
 // })
 
+router.get('/:tag/:value', (req, res) => {
+  const searchValue = req.params.value
+  const regex = new RegExp(searchValue, 'i')
+  Movie.find({[req.params.tag]: regex}, (error, MovieList) => {
+    res.render('search.ejs', {
+      movieIndex: MovieList,
+      currentUser: req.session.currentUser
+    })
+  })
+})
+
 
 // =======================================
 //              DELETE

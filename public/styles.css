@@ -23,7 +23,6 @@ body {
 .login-links {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 2em;
     padding:10px 0px 10px 0px;
     list-style-type: none;
     align-items: center;
@@ -142,8 +141,9 @@ a {
     justify-content: center;
     background-image: url("https://i.imgur.com/2m1RmTh.gif");
     background-repeat: repeat;
+    background-size: auto;
     margin: 0;
-    min-height: 70vh;
+    min-height: 80vh;
 }
 
 .index-tile {
@@ -200,6 +200,7 @@ a {
     background-color: black;
     padding-top: 1em;
     margin-bottom: 2em;
+    margin-top: 2em;
 }
 
 .show-page-body {

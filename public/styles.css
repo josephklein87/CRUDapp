@@ -202,7 +202,7 @@ a {
     margin-bottom: 2em;
 }
 
-body {
+.show-page-body {
     background-image: url("https://i.imgur.com/2m1RmTh.gif");
     background-size:auto;
     background-repeat: round;

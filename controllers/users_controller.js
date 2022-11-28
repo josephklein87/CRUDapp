@@ -27,12 +27,12 @@ users.get('/UserList', (req, res) => {
 // Upvoting
 
 users.put('/:id/userUpvote', (req, res)=>{
-  User.findOneAndUpdate(req.session.currentUser.username, {$push: {upvotes: req.params.id}, $pull: {downvotes: req.params.id}}, () => {
+  User.findOneAndUpdate({username: req.session.currentUser.username}, {$push: {upvotes: req.params.id}, $pull: {downvotes: req.params.id}}, () => {
   });
 })
 
 users.put('/:id/userDownvote', (req, res)=>{
-  User.findOneAndUpdate(req.session.currentUser.username, {$push: {downvotes: req.params.id}, $pull: {upvotes: req.params.id}}, () => {
+  User.findOneAndUpdate({username: req.session.currentUser.username}, {$push: {downvotes: req.params.id}, $pull: {upvotes: req.params.id}}, () => {
   });
 })
 

@@ -119,8 +119,8 @@
     </body>
 </html>
 <script>
-    const id = $('.movieID').text()
-    const user = $('.userID').text()
+    let id = $('.movieID').text()
+    let user = $('.userID').text()
     console.log(user)
 
     //to check if user has upvoted or downvoted
@@ -150,7 +150,6 @@ const voteSwitchAgree = () => {
                     $('.agree-count').html(`(${data.upvotes})`);
                     $('.disagree-count').html(`(${data.downvotes})`);
             })
-            return
         }   
     }
 })}
@@ -163,7 +162,6 @@ const voteSwitchDisagree = () => {
                     $('.agree-count').html(`(${data.upvotes})`);
                     $('.disagree-count').html(`(${data.downvotes})`)
                 });
-                return
             }
     }
 })}

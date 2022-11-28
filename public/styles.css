@@ -23,15 +23,15 @@ body {
 .login-links {
     display: flex;
     justify-content: flex-end;
-    margin: 1em;
-    padding:0;
+    margin-bottom: 2em;
+    padding:10px 0px 10px 0px;
     list-style-type: none;
     align-items: center;
+    background-color: black;
 }
 
 .login-links li {
     margin-right: 1em;
-    margin-top: 1em;
     color: white;
 }
 
@@ -190,17 +190,6 @@ a {
 
 /* SHOW PAGE STYLING */
 
-a:hover {
-color: rgb(0, 255, 0);
-}
-
-.tag-tile:hover {
-    background-color: rgb(0, 255, 0);
-}
-
-.user-title:hover {
-    color: rgb(0, 255, 0);
-}
 
 .invisible {
     display:none;
@@ -208,21 +197,25 @@ color: rgb(0, 255, 0);
 
 .show-page{
     width: 75%;
+    background-color: black;
+    padding-top: 1em;
+    margin-bottom: 2em;
+}
+
+body {
+    background-image: url("https://i.imgur.com/2m1RmTh.gif");
+    background-size:auto;
+    background-repeat: round;
 }
 
 h5 {
-    color: white;
+    color: greenyellow;
     font-size: 1em;
     margin-bottom: 0;
 }
 
 .vote-results {
     margin-bottom:0;
-}
-.review-section {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .count-container {
@@ -242,15 +235,9 @@ h5 {
     align-items: center;
 }
 
-.tag-tile {
-    background-color: white;
-    margin: 1em;
-    padding: 10px;
-    color: black;
-}
-
 .show-page-poster {
-    height: 500px;
+    width: 60%;
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
@@ -261,10 +248,14 @@ h5 {
 
 .movie-info {
     margin-top: 1em;
+    margin-bottom: 2em;
 }
 
 .back-button {
-    margin: 20px;
+    margin: 0;
+    position: absolute;
+    top: 10px;
+    left: 15px;
 }
 
 .vote-container {
@@ -304,12 +295,13 @@ h5 {
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
+    background-color: greenyellow;
     color: black;
     padding: .5em;
-    width: 80%;
+    width: 90%;
+    max-width: 600px;
     margin-bottom: .5em;
-    
+    border-radius: 10px;
 }
 
 .comments-main, .comments-denied {
@@ -317,24 +309,83 @@ h5 {
 }
 
 .comments-container p {
-    color: black;
     align-self: flex-start;
 }
 
 .commenter {
     align-self: flex-start;
-    margin-bottom: .5em;
+    background-color: black;
+    margin: 0;
+    color: greenyellow;
+    padding: .3em;
+    position: relative;
+    top: -10px;
+    left: -10px;
+}
+
+.comment-box {
+    background-color: greenyellow;
+ 
+}
+
+.comment {
+    color: black;
 }
 
 
 
 .denied {
-    color: white;
+    color: greenyellow;
 }
 
 .comments-section-header {
     margin-top: 1em;
+    color: greenyellow;
 }
+
+.show-page h2, .user-title, .show-page h4, .show-page h3, .post-comment-container p, .agree-count, .disagree-count{
+    color: greenyellow;
+
+}
+
+.show-page h4 {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.tag-tile {
+    background-color: greenyellow;
+    margin: 1em;
+    padding: 10px;
+    color: black;
+}
+
+.director-name:hover, .actor-name:hover {
+    background-color: rgb(0, 255, 0);
+    color: black;
+    }
+    
+.tag-tile:hover {
+    background-color: rgb(0, 255, 0);
+}
+    
+.user-title:hover {
+    color: rgb(0, 255, 0);
+}
+
+.review-section {
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline;
+}
+
+.review-div {
+    margin: 10px;
+}
+
 /* NEW PAGE STYLING */
 
 .form-group {
@@ -353,7 +404,7 @@ h5 {
     text-align: center;
     background-color: rgba(56, 45, 255, 0);
     border: none;
-    color:white;
+    color:greenyellow;
     width: 90%;
     margin-bottom: 1em;
 }
@@ -362,6 +413,12 @@ form p {
     margin-bottom: 0;
 }
 
+.director-name, .actor-name, .review-section {
+    background-color: greenyellow;
+    color: black;
+    padding: 10px;
+    text-align: center;
+}
 
 
 

@@ -32,7 +32,7 @@
         <% } %>
         <div class="container-fluid show-page">
             <a href="/search/username/<%= movieIndex.username %>"><h2 class="user-title"><%= movieIndex.username %></h2></a>
-            <h3>THINKS THIS MOVIE SUCKS</h3>
+            <h3>HATES THIS MOVIE</h3>
             <img class="show-page-poster" src= <%=movieIndex.image%>>
             <h2><%= movieName %></h2>
             <% if (currentUser) { %>
@@ -65,15 +65,17 @@
                 
                         <% if (i > 0) { %>
                             , <% } %>
-                        <a href="/search/director/<%=movieIndex.director%>"><%=movieIndex.director%></a>
+                        <a class = "director-name" href="/search/director/<%=movieIndex.director%>"><%=movieIndex.director%></a>
                 <% } %>
                         </p>
                 <h4>THE ACTOR THAT MADE IT WORSE:</h4>
-                <p class ="actor div">
-                    <a href="/search/worstActor/<%=movieIndex.worstActor%>"><%=movieIndex.worstActor%></a>
+                <p class ="actor-div">
+                    <a class= "actor-name" href="/search/worstActor/<%=movieIndex.worstActor%>"><%=movieIndex.worstActor%></a>
                 </p>
                 <h4>WHY IT OFFENDED ME SO:</h4>
-                <p class="review-section"><%=movieIndex.review%></p>
+                <div class="'review-div">
+                    <p class="review-section"><%=movieIndex.review%></p>
+                </div>
             </div>
             <% if (currentUser && currentUser.username === movieIndex.username) { %>
             <div class="edit-delete">
@@ -87,10 +89,10 @@
             </div>
             <% } %>
             <% if (currentUser) { %>
-                <form class="form-group new-movie-container" action="/<%=movieIndex._id%>/addComment?_method=PUT" method="POST">
+                <form class="form-group post-comment-container" action="/<%=movieIndex._id%>/addComment?_method=PUT" method="POST">
                 <p>logged in as:</p>
                 <input class="username-input" type="text" name="user" value="<%=currentUser.username%>" readonly/><br/>
-                <textarea class="form-control review" id="exampleFormControlTextarea1" rows= "3" name="body" placeholder="Enter comment here"></textarea><br/>
+                <textarea class="form-control comment-box" id="exampleFormControlTextarea1" rows= "3" name="body" placeholder="Enter comment here"></textarea><br/>
                 <input class="btn btn-primary add-movie-button" id="submit" type="submit" value="Post Comment"/>
             </form> 
             <% } else { %>

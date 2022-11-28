@@ -190,6 +190,18 @@ a {
 
 /* SHOW PAGE STYLING */
 
+a:hover {
+color: rgb(0, 255, 0);
+}
+
+.tag-tile:hover {
+    background-color: rgb(0, 255, 0);
+}
+
+.user-title:hover {
+    color: rgb(0, 255, 0);
+}
+
 .invisible {
     display:none;
 }

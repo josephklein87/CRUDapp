@@ -27,17 +27,17 @@ users.get('/UserList', (req, res) => {
 // Upvoting
 
 users.put('/:id/userUpvote', (req, res)=>{
-  User.findOneAndUpdate({username: req.session.currentUser.username}, {$push: {upvotes: req.params.id}, $pull: {downvotes: req.params.id}}, () => {
+  User.findOneAndUpdate({_id: req.session.currentUser._id}, {$push: {upvotes: req.params.id}, $pull: {downvotes: req.params.id}}, () => {
   });
 })
 
 users.put('/:id/userDownvote', (req, res)=>{
-  User.findOneAndUpdate({username: req.session.currentUser.username}, {$push: {downvotes: req.params.id}, $pull: {upvotes: req.params.id}}, () => {
+  User.findOneAndUpdate({_id: req.session.currentUser._id}, {$push: {downvotes: req.params.id}, $pull: {upvotes: req.params.id}}, () => {
   });
 })
 
 users.get('/voteCheck', (req, res) => {
-  User.find({}, {username: 1, upvotes: 1, downvotes: 1}, (error, foundUser) => {
+  User.find({_id: req.session.currentUser._id}, {_id: 1, username: 1, upvotes: 1, downvotes: 1}, (error, foundUser) => {
     res.send(foundUser)
   })
 })

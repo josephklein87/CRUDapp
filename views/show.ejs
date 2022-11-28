@@ -28,7 +28,7 @@
         </div>
         <p class="invisible movieID"><%=movieIndex._id%></p>
         <% if (currentUser) { %>
-        <p class="invisible userID"><%=currentUser.username%></p>
+        <p class="invisible userID"><%=currentUser._id%></p>
         <% } %>
         <div class="container-fluid show-page">
             <h2 class="user-title"><%= movieIndex.username %></h2>
@@ -127,44 +127,71 @@
 
 const voteChecker = () => {
     $.ajax({url: '/users/voteCheck', method: 'GET'}).then(function(data) {
-        console.log(data)
-        for (let i=0; i < data.length; i++) {
-            if (data[i].username === user && data[i].upvotes.indexOf(id) > -1) {
-                document.querySelector('.agree-button').disabled = true;
-                document.querySelector('.disagree-button').disabled=false;
-                return true
-            } else if (data[i].username === user && data[i].downvotes.indexOf(id) > -1) {
-                document.querySelector('.disagree-button').disabled = true;
+        if (data[0].upvotes.indexOf(id) > -1) {
+            document.querySelector('.agree-button').disabled = true;
+            document.querySelector('.disagree-button').disabled=false;
+            return true 
+        } else if (data[0].downvotes.indexOf(id) > -1) {
+            document.querySelector('.disagree-button').disabled = true;
                 document.querySelector('.agree-button').disabled = false;
                 return true
-            }
         }
-    })
-}
+    })}
+
+//         for (let i=0; i < data.length; i++) {
+//             if (data[i].username === user && data[i].upvotes.indexOf(id) > -1) {
+//                 document.querySelector('.agree-button').disabled = true;
+//                 document.querySelector('.disagree-button').disabled=false;
+//                 return true
+//             } else if (data[i].username === user && data[i].downvotes.indexOf(id) > -1) {
+//                 document.querySelector('.disagree-button').disabled = true;
+//                 document.querySelector('.agree-button').disabled = false;
+//                 return true
+//             }
+//         }
+//     })
+// }
 
 const voteSwitchAgree = () => {
     $.ajax({url: '/users/voteCheck', method: 'GET'}).then(function(data) {
-        for (let i=0; i < data.length; i++) {
-            if (data[i].username === user && data[i].downvotes.indexOf(id) > -1) {
-                $.ajax({url: '/' + id + '/agreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
+        if (data[0].downvotes.indexOf(id) > -1) {
+            $.ajax({url: '/' + id + '/agreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
                     $('.agree-count').html(`(${data.upvotes})`);
                     $('.disagree-count').html(`(${data.downvotes})`);
-            })
-        }   
-    }
-})}
+        })
+    }}
+    )}
+        
+//         for (let i=0; i < data.length; i++) {
+//             if (data[i].username === user && data[i].downvotes.indexOf(id) > -1) {
+//                 $.ajax({url: '/' + id + '/agreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
+//                     $('.agree-count').html(`(${data.upvotes})`);
+//                     $('.disagree-count').html(`(${data.downvotes})`);
+//             })
+//         }   
+//     }
+// })}
 
 const voteSwitchDisagree = () => {
     $.ajax({url: '/users/voteCheck', method: 'GET'}).then(function(data) {
-        for (let i=0; i < data.length; i++) {
-            if (data[i].username === user && data[i].upvotes.indexOf(id) > -1) {
-                $.ajax({url: '/' + id + '/disagreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
-                    $('.agree-count').html(`(${data.upvotes})`);
-                    $('.disagree-count').html(`(${data.downvotes})`)
-                });
-            }
-    }
-})}
+        if (data[0].upvotes.indexOf(id) > -1) {
+            $.ajax({url: '/' + id + '/disagreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
+            $('.agree-count').html(`(${data.upvotes})`);
+            $('.disagree-count').html(`(${data.downvotes})`);
+            })
+        }}
+    )}
+            
+
+//         for (let i=0; i < data.length; i++) {
+//             if (data[i].username === user && data[i].upvotes.indexOf(id) > -1) {
+//                 $.ajax({url: '/' + id + '/disagreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
+//                     $('.agree-count').html(`(${data.upvotes})`);
+//                     $('.disagree-count').html(`(${data.downvotes})`)
+//                 });
+//             }
+//     }
+// })}
 
 voteChecker();
 

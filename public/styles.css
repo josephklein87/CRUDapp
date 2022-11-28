@@ -58,6 +58,11 @@ a {
     background-color: yellow;
 }
 
+.index-tile a:hover h5 {
+    color: black
+}
+
+
 .index-tile a:hover .movie-tile-tag-single {
     background-color: black;
     color: white;

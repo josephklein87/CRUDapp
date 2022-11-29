@@ -157,16 +157,16 @@ const voteChecker = () => {
 //     })
 // }
 
-const voteSwitchAgree = () => {
-    $.ajax({url: '/users/voteCheck', method: 'GET'}).then(function(data) {
-        console.log(data[0].downvotes.indexOf(id))
-        if (data[0].downvotes.indexOf(id) > -1) {
-            $.ajax({url: '/' + id + '/agreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
-                    $('.agree-count').html(`(${data.upvotes})`);
-                    $('.disagree-count').html(`(${data.downvotes})`);
-        })
-    }}
-    )}
+// const voteSwitchAgree = () => {
+//     $.ajax({url: '/users/voteCheck', method: 'GET'}).then(function(data) {
+//         console.log(data[0].downvotes.indexOf(id))
+//         if (data[0].downvotes.indexOf(id) > -1) {
+//             $.ajax({url: '/' + id + '/agreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
+//                     $('.agree-count').html(`(${data.upvotes})`);
+//                     $('.disagree-count').html(`(${data.downvotes})`);
+//         })
+//     }}
+//     )}
         
 //         for (let i=0; i < data.length; i++) {
 //             if (data[i].username === user && data[i].downvotes.indexOf(id) > -1) {
@@ -178,16 +178,16 @@ const voteSwitchAgree = () => {
 //     }
 // })}
 
-const voteSwitchDisagree = () => {
-    $.ajax({url: '/users/voteCheck', method: 'GET'}).then(function(data) {
-        if (data[0].upvotes.indexOf(id) > -1) {
-            console.log(data[0].upvotes.indexOf(id))
-            $.ajax({url: '/' + id + '/disagreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
-            $('.agree-count').html(`(${data.upvotes})`);
-            $('.disagree-count').html(`(${data.downvotes})`);
-            })
-        }}
-    )}
+// const voteSwitchDisagree = () => {
+//     $.ajax({url: '/users/voteCheck', method: 'GET'}).then(function(data) {
+//         if (data[0].upvotes.indexOf(id) > -1) {
+//             console.log(data[0].upvotes.indexOf(id))
+//             $.ajax({url: '/' + id + '/disagreeSwitch?_method=PUT', method:'PUT'}).then(function(data){
+//             $('.agree-count').html(`(${data.upvotes})`);
+//             $('.disagree-count').html(`(${data.downvotes})`);
+//             })
+//         }}
+//     )}
             
 
 //         for (let i=0; i < data.length; i++) {

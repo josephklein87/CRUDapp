@@ -55,3 +55,9 @@ I then set it to disable both buttons after the vote but re-enable the correct b
 ### 2) Passing variables from Mongoose to Javascript
 
 I had issues accessing information from our Mongo DB in certain sections where I needed to access specific information that was being shown on the page. For some things I used an AJAX request to get the information, like when I needed the list of all usernames to check for username validation. But if I wanted to access information like the movie ID of the current show-page in the Javascript, I created an div in the EJS that I set to display:none so it would be invisible. In this div I referenced whatever variable I was passing in from the route and then used javascript to take the value of the div and save it as a string inside a variable in the javascript. I then passed that variable into whatever functions I needed it for. 
+
+## FUTURE POSSIBLE FEATURES
+
+1) Edit/Delete Comments
+2) Sort Index By Parameters using AJAX (most upvoted, most downvoted, most comments etc.)
+3) 

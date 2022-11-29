@@ -13,13 +13,13 @@
 
     <title>Hello, world!</title>
   </head>
-  <body>
+  <body class="show-page-body">
     <%- include ('./partials/nav.ejs') %>
     <div class="back-button-divider">
         <a href="/"><button class="btn btn-secondary back-button" >BACK</button></a>
         </div>
-    <div class="container-fluid main-container">
-        <h1>THROW A MOVIE IN THE PIT</h1>
+    <div class="container-fluid main-container edit-page-container new-page-container">
+        <h1 class="account-header">THROW A MOVIE IN THE PIT</h1>
         <form class="form-group new-movie-container" action="/addMovie" method="POST">
             <p>logged in as:</p>
             <input class="username-input" type="text" name="username" value="<%=currentUser.username%>" readonly/><br/>

@@ -565,3 +565,22 @@ form p {
 .edit-page-container h1 {
     margin-bottom: 0;
 }
+
+/* SCREEN SIZE CHANGES */
+
+@media (max-width: 600px) {
+    .searchbar{
+        width: 250px;
+    }
+
+    input:placeholder-shown, textarea:placeholder-shown {
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 300px) {
+    .sign-in-show{
+        display: none;
+    }
+}

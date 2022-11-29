@@ -1,7 +1,7 @@
 <div class="nav-div">
     <ul class="login-links">
         <% if (currentUser) { %>
-        <li>signed in: <%= currentUser.username %> </li>
+        <li class="sign-in-show">signed in: <%= currentUser.username %> </li>
         <li>
           <form action="/sessions?_method=DELETE" method="POST">
             <input class= "btn btn-secondary" type="submit" value="Log Out"/>

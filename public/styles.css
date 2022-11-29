@@ -547,6 +547,7 @@ form p {
 
 .login-container {
     padding-bottom: 2em;
+    max-width: 600px;
 }
 
 .edit-page-container {
@@ -578,6 +579,12 @@ form p {
     input:placeholder-shown, textarea:placeholder-shown {
         font-size: 12px;
     }
+
+    .show-page-body, .movies-container {
+        background-size: contain;
+    }
+
+    .
 
 }
 

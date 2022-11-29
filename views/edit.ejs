@@ -13,13 +13,13 @@
 
     <title>EDIT MOVIE</title>
   </head>
-  <body>
+  <body class="show-page-body">
     <%- include ('./partials/nav.ejs') %>
     <div class="back-button-divider">
         <a href="/<%=movieIndex._id%>"><button class="btn btn-secondary back-button" >BACK</button></a>
     </div>
-    <div class="container-fluid main-container">
-        <h1>EDIT POST FOR <%=movieIndex.name.toUpperCase()%></h1>
+    <div class="container-fluid main-container edit-page-container">
+        <h1>EDIT POST</br><span class="account-header"><%=movieIndex.name.toUpperCase()%></span></h1>
         <form class="form-group new-movie-container" action="/<%=movieIndex._id%>?_method=PUT" method="POST">>
           <div class="edit-header">TITLE</div>
             <input class="form-control" type="text"  name="name" maxlength="30" value="<%=movieIndex.name%>" /><br/>
@@ -39,6 +39,9 @@
             <textarea class="form-control review" id="exampleFormControlTextarea1" rows= "3" name="review"><%=movieIndex.review%></textarea><br/>
             <input class="btn btn-primary add-movie-button" id="submit" type="submit" placeholder="SUBMIT EDITS"/>
         </form>
+    </div>
+    <div class="spacer">
+
     </div>
   </body>
 </html>

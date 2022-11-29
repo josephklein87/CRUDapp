@@ -1,5 +1,10 @@
 /* MAIN PAGE STYLING */
 
+html {
+    width: 100%;
+    height: 100%;
+}
+
 @font-face {
     font-family: mySlime;
     src: url(shlop.ttf);
@@ -27,6 +32,8 @@ body {
     list-style-type: none;
     align-items: center;
     background-color: black;
+    height: 60px;
+    width: 100%;
 }
 
 .login-links li {
@@ -382,12 +389,11 @@ a {
 }
 
 .review-section {
-    width: 90%;
+    width: 80%;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
-    display: inline;
 }
 
 .review-div {
@@ -460,7 +466,7 @@ form p {
     color: black;
     position:relative;
     z-index: 1;
-    left: 42%;
+    left: 41%;
     bottom: 32px;
 }
 
@@ -479,6 +485,17 @@ form p {
 
 /* New Account Styling */
 
+.create-account-container {
+    margin-top: 12%;
+    background-color: black;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    width: 50%;
+    min-width: 320px;
+}
+
 #validation-txt {
     color: white;
 }
@@ -496,7 +513,7 @@ form p {
     color: green;
     position:relative;
     z-index: 1;
-    left: 42%;
+    left: 41%;
     bottom: 32px;
 }
 
@@ -504,6 +521,36 @@ form p {
     color: red;
     position:relative;
     z-index: 1;
-    left: 41.93%;
+    left: 41%;
     bottom: 32px;
+}
+
+.account-header{
+    background-color: greenyellow;
+    color: black;
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: .5em;
+}
+
+.login-container {
+    padding-bottom: 2em;
+}
+
+.edit-page-container {
+    background-color: black;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    margin-top: 40px;
+    height: 80%;
+}
+
+.spacer {
+    height: 2em;
+}
+
+.edit-page-container h1 {
+    margin-bottom: 0;
 }

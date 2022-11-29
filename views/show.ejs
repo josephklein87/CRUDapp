@@ -30,7 +30,7 @@
         <% if (currentUser) { %>
         <p class="invisible userID"><%=currentUser._id%></p>
         <% } %>
-        <div class="container-fluid show-page">
+        <div class="container-fluid main-container show-page edit-page-container">
             <a href="/search/username/<%= movieIndex.username %>"><h2 class="user-title"><%= movieIndex.username %></h2></a>
             <h3>HATES THIS MOVIE</h3>
             <img class="show-page-poster" src= <%=movieIndex.image%>>

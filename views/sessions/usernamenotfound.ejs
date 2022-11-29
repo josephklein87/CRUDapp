@@ -16,12 +16,12 @@
 
     <title>Create an Account</title>
   </head>
-  <body>
+  <body class="show-page-body">
     <%- include ('../partials/nav.ejs') %>
     <div class="back-button-divider">
         <a href="/"><button class="btn btn-secondary back-button" >BACK</button></a>
         </div>
-    <div class="container-fluid main-container create-account-container login-container">
+        <div class="container-fluid main-container create-account-container login-container">
         <h1 class="account-header">Login to Account</h1>
         <form class="form-group create-account" action="/sessions/userLogin" method="POST">
             <input class="form-control" type="text"  name="username" maxlength="15" placeholder="Username" /><br/>

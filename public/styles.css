@@ -521,6 +521,11 @@ form p {
     margin-top: 1em;
 }
 
+.title-validate {
+    color: white;
+    margin-top: 1em;
+}
+
 .fa-check {
     color: green;
     position:relative;

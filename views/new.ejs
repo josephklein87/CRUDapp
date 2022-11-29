@@ -10,6 +10,9 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/styles.css">
+    
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title>POST NEW MOVIE</title>
   </head>
@@ -23,14 +26,15 @@
         <form class="form-group new-movie-container" action="/addMovie" method="POST">
             <p>logged in as:</p>
             <input class="username-input" type="text" name="username" value="<%=currentUser.username%>" readonly/><br/>
-            <input class="form-control" type="text"  name="name" maxlength="30" placeholder="Title" /><br/>
-            <input class="form-control" type="text" name="image" placeholder="Image URL"/><br/>
-            <input class="form-control" type="text" name="year" maxlength="4" placeholder="Release Year"/><br/>
-            <input class="form-control" type="text" name="director" maxlength="30" placeholder="Director(s) (Separate by Commas)" /><br/>
-            <input class="form-control" type="text" name="worstActor" maxlength="30" placeholder="Worst Actor Featured"/><br/>
-            <input class="form-control" type="text" name="genre" maxlength="20" placeholder="Genre"/><br/>
-            <input class="form-control" type="text" name="tags" maxlength="40" placeholder="Tags (Separate by Commas)"/><br/>
-            <textarea class="form-control review" id="exampleFormControlTextarea1" rows= "3" name="review" placeholder="A Short Review"></textarea><br/>
+            <div class="title-validate"></div></br>
+            <input class="form-control form1 movie-title" type="text"  name="name" maxlength="30" placeholder="Title" onkeyup="titleCheck();" /><br/>
+            <input class="form-control form2" type="text" name="image" placeholder="Image URL"/><br/>
+            <input class="form-control form3" type="text" name="year" maxlength="4" placeholder="Release Year"/><br/>
+            <input class="form-control form4" type="text" name="director" maxlength="30" placeholder="Director(s) (Separate by Commas)" /><br/>
+            <input class="form-control form5" type="text" name="worstActor" maxlength="30" placeholder="Worst Actor Featured"/><br/>
+            <input class="form-control form6" type="text" name="genre" maxlength="20" placeholder="Genre"/><br/>
+            <input class="form-control form7" type="text" name="tags" maxlength="40" placeholder="Tags (Separate by Commas)"/><br/>
+            <textarea class="form-control review form8" id="exampleFormControlTextarea1" rows= "3" name="review" placeholder="A Short Review"></textarea><br/>
             <input class="btn btn-primary add-movie-button" id="submit" type="submit" value="ADD MOVIE"/>
         </form>
     </div>
@@ -39,3 +43,42 @@
     </div>
   </body>
 </html>
+<script>
+  let key1=false
+
+  const titleCheck = () => {
+            $.ajax({url: '/movieList', method:'GET'}).then(function(data) {
+            console.log(data)
+            let validationField = document.querySelector('.title-validate');
+            let titleAvailable = document.querySelector('.movie-title');
+            let content = titleAvailable.value;
+            let form1 = document.querySelector('.form1').value
+            let form2 = document.querySelector('.form2').value
+            let form3 = document.querySelector('.form3').value
+            let form4 = document.querySelector('.form4').value
+            let form5 = document.querySelector('.form5').value
+            let form6 = document.querySelector('.form6').value
+            let form7 = document.querySelector('.form7').value
+            let form8 = document.querySelector('.form8').value
+            
+
+            const  errors = [];
+
+            for (let i=0; i < data.length; i++) {
+                if (data[i].name == content) {
+                    errors.push("This movie is already in the database.</br>");
+                }
+            }
+            if (form1.length === 0 || form2.length === 0 || form3.length === 0 || form4.length === 0 || form5.length === 0 || form6.length === 0 || form7.length === 0 || form8.length === 0) {
+              errors.push("Please fill in all fields.</br>");
+            }
+            if (errors.length > 0 || content.length === 0) {
+                validationField.innerHTML = errors.join('');
+                document.querySelector(".add-movie-button").disabled = true
+            } else {
+                validationField.innerHTML = errors.join('');
+                document.querySelector(".add-movie-button").disabled = false
+  }})}
+
+  titleCheck();
+</script>

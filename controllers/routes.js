@@ -37,6 +37,14 @@ router.post('/addMovie', isAuthenticated, (req, res)=>{
 });
 });
 
+router.get(`/movieList`, (req, res)=> {
+  Movie.find({}, {name: 1}, (error, MovieList)=> {
+      if (error) console.log('error')
+    res.send(MovieList);
+  })
+});
+
+
 // =======================================
 //              POST COMMENT
 // =======================================

@@ -28,13 +28,13 @@
             <input class="username-input" type="text" name="username" value="<%=currentUser.username%>" readonly/><br/>
             <div class="title-validate"></div></br>
             <input class="form-control form1 movie-title" type="text"  name="name" maxlength="30" placeholder="Title" onkeyup="titleCheck();" /><br/>
-            <input class="form-control form2" type="text" name="image" placeholder="Image URL"/><br/>
-            <input class="form-control form3" type="text" name="year" maxlength="4" placeholder="Release Year"/><br/>
-            <input class="form-control form4" type="text" name="director" maxlength="30" placeholder="Director(s) (Separate by Commas)" /><br/>
-            <input class="form-control form5" type="text" name="worstActor" maxlength="30" placeholder="Worst Actor Featured"/><br/>
-            <input class="form-control form6" type="text" name="genre" maxlength="20" placeholder="Genre"/><br/>
-            <input class="form-control form7" type="text" name="tags" maxlength="40" placeholder="Tags (Separate by Commas)"/><br/>
-            <textarea class="form-control review form8" id="exampleFormControlTextarea1" rows= "3" name="review" placeholder="A Short Review"></textarea><br/>
+            <input class="form-control form2" type="text" name="image" placeholder="Image URL" onkeyup="titleCheck()"/><br/>
+            <input class="form-control form3" type="text" name="year" maxlength="4" placeholder="Release Year" onkeyup="titleCheck()"/><br/>
+            <input class="form-control form4" type="text" name="director" maxlength="30" placeholder="Director(s) (Separate by Commas)" onkeyup="titleCheck()"/><br/>
+            <input class="form-control form5" type="text" name="worstActor" maxlength="30" placeholder="Worst Actor Featured" onkeyup="titleCheck()"/><br/>
+            <input class="form-control form6" type="text" name="genre" maxlength="20" placeholder="Genre" onkeyup="titleCheck()"/><br/>
+            <input class="form-control form7" type="text" name="tags" maxlength="40" placeholder="Tags (Separate by Commas)" onkeyup="titleCheck()"/><br/>
+            <textarea class="form-control review form8" id="exampleFormControlTextarea1" rows= "3" name="review" placeholder="A Short Review" onkeyup="titleCheck()"></textarea><br/>
             <input class="btn btn-primary add-movie-button" id="submit" type="submit" value="ADD MOVIE"/>
         </form>
     </div>
